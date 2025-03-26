@@ -2,6 +2,7 @@
 
 use goblin::archive;
 use goblin::elf;
+use goblin_experimental as goblin;
 use std::env;
 use std::fs;
 use std::path::Path;

@@ -5,6 +5,7 @@ use goblin::elf::Elf;
 use goblin::elf32::gnu_hash::GnuHash as GnuHash32;
 use goblin::elf64::gnu_hash::GnuHash as GnuHash64;
 use goblin::strtab::Strtab;
+use goblin_experimental as goblin;
 
 #[repr(C)]
 #[repr(align(64))] // Align to cache lines

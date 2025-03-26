@@ -25,6 +25,7 @@
 //! # Example
 //!
 //! ```rust
+//! use goblin_experimental as goblin;
 //! use goblin::{error, Object};
 //! use std::path::Path;
 //! use std::env;
