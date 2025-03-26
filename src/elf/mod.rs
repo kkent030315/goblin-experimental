@@ -5,6 +5,7 @@
 //! # Example
 //!
 //! ```rust
+//! use goblin_experimental as goblin;
 //! use std::fs::File;
 //!
 //! pub fn read (bytes: &[u8]) {

@@ -3,6 +3,7 @@
 /// which means downstream crates/clients can just "parse" headers out of
 /// arbitrary buffers, without learning new crate specific function names
 /// I.e., all you need are Types + Pread = Happiness
+use goblin_experimental as goblin;
 use goblin::{elf, elf64, error};
 use scroll::{Pread, Pwrite};
 

@@ -1,3 +1,4 @@
+use goblin_experimental as goblin;
 use goblin::mach;
 use goblin::mach::SingleArch;
 use std::borrow::Cow;

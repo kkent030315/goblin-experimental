@@ -1,5 +1,6 @@
 #[cfg(test)]
 mod te_tests {
+    use goblin_experimental as goblin;
     use goblin::pe;
     use goblin::pe::header::machine_to_str;
     use goblin::pe::section_table::*;

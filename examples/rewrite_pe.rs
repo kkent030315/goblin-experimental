@@ -1,3 +1,4 @@
+use goblin_experimental as goblin;
 use goblin::pe::PE;
 use scroll::Pwrite;
 

@@ -363,6 +363,7 @@ pub mod cputype {
             /// For example:
             ///
             /// ```rust
+            /// use goblin_experimental as goblin;
             /// use std::fs::read;
             /// use goblin::mach::constants::cputype::get_arch_name_from_types;
             /// use goblin::mach::Mach;

@@ -1,3 +1,4 @@
+use goblin_experimental as goblin;
 use goblin::error;
 use std::env;
 use std::fs;

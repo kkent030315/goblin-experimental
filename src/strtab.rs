@@ -101,6 +101,7 @@ impl<'a> Strtab<'a> {
     ///
     /// # Examples
     /// ```rust
+    /// use goblin_experimental as goblin;
     /// use goblin::error::Error;
     ///
     /// pub fn show_shdr_strtab(bytes: &[u8]) -> Result<(), Error> {

@@ -8,6 +8,7 @@
 //! List the dependencies of an ELF file that have [version needed][lsb-verneed] information along
 //! with the versions needed for each dependency.
 //! ```rust
+//! use goblin_experimental as goblin;
 //! use goblin::error::Error;
 //!
 //! pub fn show_verneed(bytes: &[u8]) -> Result<(), Error> {
@@ -32,6 +33,7 @@
 //! List the [version defined][lsb-verdef] information of an ELF file, effectively listing the version
 //! defined by this ELF file.
 //! ```rust
+//! use goblin_experimental as goblin;
 //! use goblin::error::Error;
 //!
 //! pub fn show_verdef(bytes: &[u8]) -> Result<(), Error> {

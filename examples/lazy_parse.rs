@@ -3,6 +3,7 @@
 /// Steps:
 ///     1. cd tests/bins/elf/gnu_hash/ && gcc -o hello helloworld.c
 ///     2. cargo run --example=lazy_parse
+use goblin_experimental as goblin;
 use goblin::container::{Container, Ctx};
 use goblin::elf::*;
 use std::ffi::CStr;

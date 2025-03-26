@@ -1,3 +1,4 @@
+use goblin_experimental as goblin;
 use goblin::elf::section_header::{SHN_XINDEX, SHT_GNU_HASH};
 use goblin::elf::sym::{Sym, Symtab};
 use goblin::elf::symver::{VerdefSection, VerneedSection, VersymSection};

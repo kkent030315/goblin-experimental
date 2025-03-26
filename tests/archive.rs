@@ -2,6 +2,7 @@ use std::env;
 use std::fs;
 use std::path::PathBuf;
 
+use goblin_experimental as goblin;
 use goblin::archive::*;
 use scroll::Pread;
 
