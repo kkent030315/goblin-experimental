@@ -4,7 +4,7 @@ While I maintain backward-compatible changes as well as the original goblin, thi
 
 ---
 
-# libgoblin
+# libgoblin-experimental
 
 [![Actions][actions-badge]][actions-url]
 [![crates.io version][crates-goblin-badge]][crates-goblin]
