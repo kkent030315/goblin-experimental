@@ -1,5 +1,5 @@
-use goblin_experimental as goblin;
 use goblin::pe::PE;
+use goblin_experimental as goblin;
 use scroll::Pwrite;
 
 fn main() {

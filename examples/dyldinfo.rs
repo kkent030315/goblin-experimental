@@ -1,6 +1,6 @@
-use goblin_experimental as goblin;
 use goblin::mach;
 use goblin::mach::SingleArch;
+use goblin_experimental as goblin;
 use std::borrow::Cow;
 use std::env;
 use std::fs;

@@ -2,8 +2,8 @@ use std::env;
 use std::fs;
 use std::path::PathBuf;
 
-use goblin_experimental as goblin;
 use goblin::archive::*;
+use goblin_experimental as goblin;
 use scroll::Pread;
 
 #[test]
@@ -60,7 +60,7 @@ fn get_libgoblin_rlib() -> PathBuf {
     let me = env::current_exe().unwrap();
     // back to `<profile>` folder
     let artifact_dir = me.ancestors().nth(2).unwrap();
-    artifact_dir.join("libgoblin.rlib")
+    artifact_dir.join("libgoblin_experimental.rlib")
 }
 
 // Cannot run this on Windows because *.rlib type on Windows is unknown

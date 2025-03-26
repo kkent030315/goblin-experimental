@@ -1,5 +1,5 @@
-use goblin_experimental as goblin;
 use goblin::error;
+use goblin_experimental as goblin;
 use std::env;
 use std::fs;
 use std::path::Path;

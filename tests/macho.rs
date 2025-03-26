@@ -1,5 +1,5 @@
-use goblin_experimental as goblin;
 use goblin::mach::*;
+use goblin_experimental as goblin;
 
 #[test]
 fn parse_fat_header() {
