@@ -1,3 +1,9 @@
+**WARNING: This crate is basically copy of goblin, but may include experimental changes!**
+
+While I maintain backward-compatible changes as well as the original goblin, this crate includes upcoming bug fixes and features that enrich your experience.
+
+---
+
 # libgoblin
 
 [![Actions][actions-badge]][actions-url]
@@ -5,22 +11,22 @@
 
 <!-- Badges' links -->
 
-[actions-badge]: https://github.com/m4b/goblin/workflows/CI/badge.svg?branch=master
-[actions-url]: https://github.com/m4b/goblin/actions
-[crates-goblin-badge]: https://img.shields.io/crates/v/goblin.svg
-[crates-goblin]: https://crates.io/crates/goblin
+[actions-badge]: https://github.com/kkent030315/goblin-experimental/workflows/CI/badge.svg?branch=master
+[actions-url]: https://github.com/kkent030315/goblin-experimental/actions
+[crates-goblin-badge]: https://img.shields.io/crates/v/goblin-experimental.svg
+[crates-goblin]: https://crates.io/crates/goblin-experimental
 
 ![say the right words](https://s-media-cache-ak0.pinimg.com/736x/1b/6a/aa/1b6aaa2bae005e2fed84b1a7c32ecb1b.jpg)
 
 ### Documentation
 
-https://docs.rs/goblin/
+https://docs.rs/goblin-experimental/
 
 [changelog](CHANGELOG.md)
 
 ### Usage
 
-Goblin requires `rustc` 1.63.0 (Rust 2021 edition).
+Goblin requires `rustc` ~~1.63.0~~ 1.65.0 (Rust 2021 edition).
 
 Add to your `Cargo.toml`
 
