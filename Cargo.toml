@@ -23,7 +23,7 @@ keywords = ["binary", "elf", "mach", "pe", "archive"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/kkent030315/goblin-experimental"
-description = "An impish, cross-platform, ELF, Mach-o, and PE binary parsing and loading crate"
+description = "(Experimental) An impish, cross-platform, ELF, Mach-o, and PE binary parsing and loading crate"
 
 [dependencies]
 plain = "0.2.3"
