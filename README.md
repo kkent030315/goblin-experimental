@@ -1,4 +1,4 @@
-**WARNING: This crate is basically copy of goblin, but may include experimental changes!**
+**WARNING: This crate is basically a copy of goblin, but may include experimental changes!**
 
 While I maintain backward-compatible changes as well as the original goblin, this crate includes upcoming bug fixes and features that enrich your experience.
 
@@ -32,7 +32,7 @@ Add to your `Cargo.toml`
 
 ```toml
 [dependencies]
-goblin = "0.9"
+goblin-experimental = "0.1"
 ```
 
 ### Features
