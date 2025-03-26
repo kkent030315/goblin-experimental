@@ -14,6 +14,7 @@ use resource::ResourceData;
 pub mod authenticode;
 pub mod certificate_table;
 pub mod characteristic;
+pub mod clr;
 pub mod data_directories;
 pub mod debug;
 pub mod dll_characteristic;
@@ -83,6 +84,8 @@ pub struct PE<'a> {
     pub relocation_data: Option<relocation::RelocationData<'a>>,
     /// Certificates present, if any, described by the Certificate Table
     pub certificates: certificate_table::CertificateDirectoryTable<'a>,
+    /// CLR managed data if present
+    pub clr_data: Option<clr::ClrData<'a>>,
     /// Resource information if any
     pub resource_data: Option<ResourceData<'a>>,
 }
@@ -120,6 +123,7 @@ impl<'a> PE<'a> {
         let mut exception_data = None;
         let mut relocation_data = None;
         let mut certificates = Default::default();
+        let mut clr_data = Default::default();
         let mut resource_data = Default::default();
         let mut is_64 = false;
         if let Some(optional_header) = header.optional_header {
@@ -270,6 +274,19 @@ impl<'a> PE<'a> {
                 )?);
             }
 
+            if let Some(com_descriptor) = optional_header.data_directories.get_clr_runtime_header()
+            {
+                let data = clr::ClrData::parse_with_opts(
+                    bytes,
+                    &com_descriptor,
+                    &sections,
+                    file_alignment,
+                    opts,
+                )?;
+                clr_data = Some(data);
+                debug!("CLR data: {:#?}", data);
+            }
+
             // Parse attribute certificates unless opted out of
             let certificate_table_size = if opts.parse_attribute_certificates {
                 if let Some(&certificate_table) =
@@ -337,6 +354,7 @@ impl<'a> PE<'a> {
             exception_data,
             relocation_data,
             certificates,
+            clr_data,
             resource_data,
         })
     }
