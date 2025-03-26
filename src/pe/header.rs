@@ -1367,7 +1367,10 @@ pub fn machine_to_str(machine: u16) -> &'static str {
 mod tests {
     use crate::{
         error,
-        pe::header::{DosStub, TeHeader, Coff},
+        pe::{
+            header::{DosStub, TeHeader},
+            Coff,
+        },
     };
 
     use super::{
@@ -1704,7 +1707,7 @@ mod tests {
             panic!("Expected a Malformed error but got {:?}", header);
         }
     }
-  
+
     #[test]
     fn parse_malformed_small_te() {
         let mut offset = 0;
