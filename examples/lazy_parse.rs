@@ -1,10 +1,11 @@
+use goblin::container::{Container, Ctx};
+use goblin::elf::*;
 /// Demonstrates parsing elf file in a lazy manner by reading only the needed parts.
 /// Lets's say we just want to know the interpreter for an elf file.
 /// Steps:
 ///     1. cd tests/bins/elf/gnu_hash/ && gcc -o hello helloworld.c
 ///     2. cargo run --example=lazy_parse
-use goblin::container::{Container, Ctx};
-use goblin::elf::*;
+use goblin_experimental as goblin;
 use std::ffi::CStr;
 use std::fs::File;
 use std::io::{Read, Seek, SeekFrom};

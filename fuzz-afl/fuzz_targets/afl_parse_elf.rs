@@ -1,5 +1,6 @@
 #[macro_use]
 extern crate afl;
+use goblin_experimental as goblin;
 
 fn main() {
     fuzz!(|data: &[u8]| {

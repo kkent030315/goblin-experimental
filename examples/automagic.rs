@@ -1,5 +1,7 @@
 use std::default::Default;
 
+use goblin_experimental as goblin;
+
 // demonstrates "automagical" elf32/64 switches via cfg on arch and pub use hacks.
 // SIZEOF_* will change depending on whether it's an x86_64 system or 32-bit x86, or really any cfg you can think of.
 // similarly the printers will be different, since they have different impls. #typepuns4life

@@ -3,6 +3,7 @@ mod te_tests {
     use goblin::pe;
     use goblin::pe::header::machine_to_str;
     use goblin::pe::section_table::*;
+    use goblin_experimental as goblin;
 
     // https://learn.microsoft.com/en-us/windows/win32/debug/pe-format#windows-subsystem
     const IMAGE_SUBSYSTEM_EFI_BOOT_SERVICE_DRIVER: u8 = 11;
