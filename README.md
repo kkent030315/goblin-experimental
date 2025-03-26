@@ -5,16 +5,16 @@
 
 <!-- Badges' links -->
 
-[actions-badge]: https://github.com/m4b/goblin/workflows/CI/badge.svg?branch=master
-[actions-url]: https://github.com/m4b/goblin/actions
-[crates-goblin-badge]: https://img.shields.io/crates/v/goblin.svg
-[crates-goblin]: https://crates.io/crates/goblin
+[actions-badge]: https://github.com/kkent030315/goblin-experimental/workflows/CI/badge.svg?branch=master
+[actions-url]: https://github.com/kkent030315/goblin-experimental/actions
+[crates-goblin-badge]: https://img.shields.io/crates/v/goblin-experimental.svg
+[crates-goblin]: https://crates.io/crates/goblin-experimental
 
 ![say the right words](https://s-media-cache-ak0.pinimg.com/736x/1b/6a/aa/1b6aaa2bae005e2fed84b1a7c32ecb1b.jpg)
 
 ### Documentation
 
-https://docs.rs/goblin/
+https://docs.rs/goblin-experimental/
 
 [changelog](CHANGELOG.md)
 
