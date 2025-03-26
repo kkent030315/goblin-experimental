@@ -1,5 +1,6 @@
 #![no_main]
 use libfuzzer_sys::fuzz_target;
+use goblin_experimental as goblin;
 
 fuzz_target!(|data: &[u8]| {
     if let Ok(elf) = goblin::elf::Elf::parse(data) {

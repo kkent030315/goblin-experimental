@@ -1,4 +1,5 @@
 use goblin::mach::{self, Mach};
+use goblin_experimental as goblin;
 use std::env;
 use std::fs::{self, File};
 use std::io::Write;
