@@ -1,3 +1,9 @@
+**WARNING: This crate is basically copy of goblin, but may include experimental changes!**
+
+While I maintain backward-compatible changes as well as the original goblin, this crate includes upcoming bug fixes and features that enrich your experience.
+
+---
+
 # libgoblin
 
 [![Actions][actions-badge]][actions-url]
