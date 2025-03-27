@@ -875,9 +875,14 @@ impl<'a> Header<'a> {
         bytes: &'a [u8],
         dos_header: DosHeader,
         dos_stub: DosStub<'a>,
+        parse_rich_header: bool,
     ) -> error::Result<Self> {
         let mut offset = dos_header.pe_pointer as usize;
-        let rich_header = RichHeader::parse(&bytes)?;
+        let rich_header = if parse_rich_header {
+            RichHeader::parse(&bytes)?
+        } else {
+            None
+        };
         let signature = bytes.gread_with(&mut offset, scroll::LE).map_err(|_| {
             error::Error::Malformed(format!("cannot parse PE signature (offset {:#x})", offset))
         })?;
@@ -903,13 +908,17 @@ impl<'a> Header<'a> {
         let dos_header = DosHeader::parse(&bytes)?;
         let dos_stub = DosStub::parse(bytes, dos_header.pe_pointer)?;
 
-        Header::parse_impl(bytes, dos_header, dos_stub)
+        Header::parse_impl(bytes, dos_header, dos_stub, true)
     }
 
     /// Parses PE header from the given bytes, a default DosHeader and DosStub are generated, and any malformed header or stub is ignored
     pub fn parse_without_dos(bytes: &'a [u8]) -> error::Result<Self> {
+        debug_assert!(
+            !bytes.starts_with(b"MZ"),
+            "Buf should not contain DOS header and stub"
+        );
         let dos_header = DosHeader::default();
-        Header::parse_impl(bytes, dos_header, DosStub::default())
+        Header::parse_impl(bytes, dos_header, DosStub::default(), false)
     }
 }
 
@@ -1374,7 +1383,8 @@ mod tests {
     };
 
     use super::{
-        machine_to_str, Header, RichHeader, RichMetadata, COFF_MACHINE_X86, DOS_MAGIC, PE_MAGIC,
+        machine_to_str, DosHeader, Header, RichHeader, RichMetadata, COFF_MACHINE_X86, DOS_MAGIC,
+        PE_MAGIC,
     };
 
     const CRSS_HEADER: [u8; 688] = [
@@ -1571,6 +1581,8 @@ mod tests {
         0x00, 0x0F, 0x00, 0xFF, 0x80,
     ];
 
+    const BIN: &[u8] = include_bytes!("../../tests/bins/pe/well_formed_import.exe.bin");
+
     #[test]
     fn crss_header() {
         let header = Header::parse(&&CRSS_HEADER[..]).unwrap();
@@ -1583,14 +1595,26 @@ mod tests {
 
     #[test]
     fn parse_without_dos() {
-        let header = Header::parse_without_dos(&BORLAND_PE32_VALID_NO_RICH_HEADER).unwrap();
-        assert_eq!(header.dos_stub, DosStub::default());
-        assert_eq!(header.rich_header.is_none(), true);
+        let result = std::panic::catch_unwind(|| {
+            let _ = Header::parse_without_dos(&BORLAND_PE32_VALID_NO_RICH_HEADER).unwrap();
+        });
+        assert!(result.is_err(), "Expected panic, got {result:?}");
+        if let Err(err) = result {
+            if let Some(s) = err.downcast_ref::<&str>() {
+                assert_eq!(
+                    *s, "Buf should not contain DOS header and stub",
+                    "Panic message did not match"
+                );
+            } else {
+                panic!("Unexpected panic type");
+            }
+        }
 
-        // DOS stub is default but rich parser still works
-        let header = Header::parse_without_dos(&CORRECT_RICH_HEADER).unwrap();
-        assert_eq!(header.dos_stub, DosStub::default());
-        assert_eq!(header.rich_header.is_some(), true);
+        // Get a PE pointer (e_lfanew)
+        let dos_header = DosHeader::parse(&BIN).unwrap();
+        // Skip DOS header and DOS stub
+        let buf = &BIN[dos_header.pe_pointer as usize..];
+        Header::parse_without_dos(buf).unwrap();
     }
 
     #[test]
